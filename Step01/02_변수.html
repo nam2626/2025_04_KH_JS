@@ -5,7 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-      
+      //자바스크립트는 통합 자료형
+      //var는 접근 범위가 함수
+      var n1;
+      n1 = 10;
+      console.log(n1);
+      n1 = 20;
+      console.log(n1);
+      n1 = 'Hello';
+      console.log(n1);
+      var n1 = 100; //재 선언이 가능함.
+      console.log(n1);
+      //--------------------------------
+      //let 접근 범위 지역변수, 블록단위 -> {}
+      let n2 = 30;
+    //   let n2 = 100;
+      console.log(n2);
+      //--------------------------------
+      const n3 = 'Hello World';//const는 자바의 final과 동일
+      //n3 = 'TEST';//상수라서 데이터 변경 X
+      console.log(n3)
+      //데이터 타입 확인
+      console.log(typeof n2, typeof n3);
     </script>
 </head>
 <body>
