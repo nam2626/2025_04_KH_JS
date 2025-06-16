@@ -17,7 +17,19 @@
         }
     </style>
     <script>
-       
+       //반복문 중첩 이용해서 1~25까지 출력하는
+       //5행 5열짜리 테이블 출력
+       let n = 1;
+       let tag = '<table>';
+        for(i=0;i<5;i++){
+            tag += '<tr>';
+            for(j=0;j<5;j++){
+                tag += `<td>${n++}</td>`;
+            }
+            tag += '</tr>';
+        }
+        tag += '</table>';
+        document.write(tag);
     </script>
 </head>
 <body>
