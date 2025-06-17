@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>if문</title>
     <script>
-      
+        console.log(Math.trunc(Math.random() * 100) + 1);
+
+        //점수에 따라서 성적 등급 A,B,C,D,F
+        let score = Math.trunc(Math.random() * 100) + 1;
+
+        if (score >= 90)
+            document.write(`A(${score})`);
+        else if (score >= 80)
+            document.write(`B(${score})`);
+        else if (score >= 70)
+            document.write(`C(${score})`);
+        else if (score >= 60)
+            document.write(`D(${score})`);
+        else
+            document.write(`F(${score})`);
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
-
-
