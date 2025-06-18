@@ -5,7 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-      
+        //웹 문서를 전부 읽은 후에 실행되는 이벤트
+        window.onload = () => {
+            let btnLogin = document.querySelector("#btn");
+            console.log(btnLogin);
+            //아이디, 패스워드 입력받는 태그도 선택
+            let id = document.querySelector("#id");
+            let pass = document.querySelector("#pass");
+
+            //버튼 클릭했을 때 이벤트 처리
+            btnLogin.onclick = () => {
+                //현재 입력된 아이디와 비밀번호를 경고창으로 띄움
+                // alert(`${id.value} / ${pass.value}`);
+                // 아이디와 비밀번호가 6자리 미만으로 입력되면 경고창을 띄움
+                //'아이디와 암호는 6글자 이상 입력해야 합니다.' 라는 경고창을 띄움
+                if(id.value.length < 6 || pass.value.length < 6){
+                    alert('아이디와 암호는 6글자 이상 입력해야 합니다.');
+                }
+            };
+        }
       
     </script>
 </head>
