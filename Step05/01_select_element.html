@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>select element</title>
+    
+    <style>
+        p{
+            background-color: red;
+        }
+    </style>
+    
+</head> 
+<body>
+    <input type="text" id="txt" value="기본값"><button>검색</button>
+    <hr>
+    <input type="text" name="t1" value="A"><br>
+    <input type="text" name="t2" value="B" readonly><br>
+    <input type="text" name="t3" value="C"><br>
+    <input type="text" name="t4" value="D"><br>
+
+    <p>1</p>
+    <p>2</p>
+    <p><b>3</b></p>
+    <p>4</p>
+    <p>5</p>
+    <h1>제목 태그</h1>
+    <script>
+        let txt = document.getElementById("txt"); //하나의 요소만 반환
+        console.log(txt);
+        //태그 선택 후 속성값 접근 방법
+         console.log(txt.value);
+         //document.getElementsByClassName('클래스 속성값'); --> 배열로 반환
+         //document.getElementsByTagName('태그명'); --> 배열로 반환
+         //document.getElementsByName('name 속성값'); --> 배열로 반환
+
+         //선택자를 이용해서 태그 접근하는 방법
+         //document.querySelector('선택자'); <-- 한개만 선택(여러개가 있으면 첫번째로 선택된 것만 선택)
+         //document.querySelectorAll('선택자'); <-- 여러개 선택 가능(배열로 반환)
+         txt = document.querySelector('#txt');
+         //value 속성값 변경
+         txt.value='바꾼값';
+         //타입을 패스워드로 변경
+         txt.type = 'password';
+         //모든 p 태그 선택, 선택 결과를 콘솔에 출력
+         let p = document.querySelectorAll('p');
+         console.log(p);
+         for(i=0;i<p.length;i++){
+            console.log(p[i]);
+            p[i].innerHTML = `<u>${Math.trunc(Math.random() * 20)}</u>`;
+            //backgroud-color --> backgroundColor
+            p[i].style.backgroundColor = 'green';
+            //글자색을 흰색으로 변경
+            p[i].style.color = '#FFFFFF';
+         }
+
+         //input 태그 전부 선택
+         //읽기전용 속성값이 뭘로 되어있는지 체크
+         let input = document.querySelectorAll('input');
+         console.log(input);
+         for(txt of input){
+            console.log(txt.readOnly);
+            //입력된 값을 전부 삭제, 배경색을 빨강으로 처리
+            txt.value = '';
+            txt.style.backgroundColor = 'red';
+            //읽기전용으로 변경
+            txt.readOnly = true;
+         }
+    </script>
+
+</body>
+</html>
