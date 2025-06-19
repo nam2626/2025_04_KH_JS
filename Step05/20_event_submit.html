@@ -5,7 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>event</title>
     <script>
-   
+        window.onload = () => {
+            let frm = document.querySelector('#frm');
+            let id = document.querySelector('#id');
+            let pass = document.querySelector('#pass');
+
+            frm.onsubmit = (e) => {
+                //경고창으로 전송되는 아이디 값, 암호 값 띄움
+                //alert(`${id.value} / ${pass.value}`);
+                //아이디나 비밀번호가 입력이 안되었으면 submit 이벤트를 중단
+                if(id.value == '' || pass.value.length == 0){
+                    alert('아이디 또는 암호를 반드시 입력해야 합니다.');
+                    e.preventDefault();
+                    //입력이 안된 항목으로 커서를 이동
+                    if(id.value == '') id.focus();
+                    if(pass.value == '') pass.focus();
+                }
+            }
+        }
     </script>
 </head>
 <body>
