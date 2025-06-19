@@ -5,7 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>event</title>
     <script>
-     
+        window.onload = () => {
+            //txt, area 선택
+            let txt = document.querySelector("#txt");
+            let area = document.querySelector("#area");
+
+            txt.onkeydown = (e) => {
+                console.log(`현재 누른 키보드키 : ${e.key} / ${e.keyCode}`);
+            }
+            txt.onkeypress = (e) => {
+                console.log(`현재 누르고 있는 키보드키 : ${e.key} / ${e.keyCode}`);
+            }
+            //키보드키를 눌렀다가 뗀 순간 현재 txt에 입력된 내용을 area에 출력
+            txt.onkeyup = (e) => {
+                console.log(`현재 눌렀다 뗀 키보드키 : ${e.key} / ${e.keyCode}`);
+                area.innerHTML = e.target.value;
+            }
+
+        }
     </script>
 </head>
 <body>
