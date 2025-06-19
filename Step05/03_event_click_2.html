@@ -15,7 +15,7 @@
             width: 200px;
             height: 100px;
             border: 1px solid black;
-            position: absolute;
+            position: fixed;
             top: 20px;
             left: 20px;
         }
@@ -24,7 +24,25 @@
 
 <body>
         <div id="pop"></div>
-      
+        <script>
+            let body = document.querySelector('body');
+
+            //이벤트 객체 : 이벤트가 발생 했을 때 해당 이벤트에 대한 정보
+            body.onclick = function(e){
+                // alert('body 클릭');
+                console.log(e);
+                //pop에 클릭한 마우스 좌표값을 출력
+                document.querySelector('#pop').innerHTML = `${e.pageX} / ${e.pageY}`;
+                //클릭했을때 배경색을 랜덤으로 지정
+                //rgb(r,g,b)
+                let r = Math.trunc(Math.random() * 256);
+                let g = Math.trunc(Math.random() * 256);
+                let b = Math.trunc(Math.random() * 256);
+                //body.style.backgroundColor = `rgb(${r},${g},${b})`;
+                //target 이벤트가 발생한 대상
+                e.target.style.backgroundColor = `rgb(${r},${g},${b})`;
+
+            }
         </script>
 </body>
 
