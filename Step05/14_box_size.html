@@ -33,7 +33,19 @@
         <div class="inner"></div>
     </div>
     <script>
-       
+       let inner = document.querySelector('.inner');
+       //css상 길이값 + padding 영역값
+       console.log(inner.clientHeight);
+       //css상 길이값 + padding 영역값 + border 두께
+       console.log(inner.offsetHeight);
+       //css상 길이값 + padding 영역값 + 보이지 않는 영역까지 길이
+       console.log(inner.scrollHeight);
+
+       //outter 선택해서 clientHeight, offsetHeight, scrollHeight 출력
+       let outter = document.querySelector('.outter');
+       console.log(outter.clientHeight);
+       console.log(outter.offsetHeight);
+       console.log(outter.scrollHeight);
     </script>
 </body>
 </html>

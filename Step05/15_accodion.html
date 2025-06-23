@@ -71,7 +71,21 @@
         }
     </style>
     <script>
+        window.onload = () => {
+            let title = document.querySelectorAll('.title');
+            let content = document.querySelectorAll('.content');
+            console.log(content);
 
+            title.forEach((obj,idx) => {
+                console.log(obj,idx,content[idx]);
+                obj.onclick = () =>{
+                    if(content[idx].clientHeight == 0)
+                        content[idx].style.height = content[idx].scrollHeight + 'px';
+                    else
+                        content[idx].style.height = '0px';
+                }
+            });
+        }
     </script>
 </head>
 
