@@ -68,23 +68,30 @@
         div.content{
             height: 0px;
             overflow: hidden;
+            transition: all 1s;
         }
     </style>
     <script>
         window.onload = () => {
             let title = document.querySelectorAll('.title');
-            let content = document.querySelectorAll('.content');
-            console.log(content);
-
+            
             title.forEach((obj,idx) => {
-                console.log(obj,idx,content[idx]);
-                obj.onclick = () =>{
-                    if(content[idx].clientHeight == 0)
-                        content[idx].style.height = content[idx].scrollHeight + 'px';
+                //동생 요소 선택
+                // console.log(obj,idx,obj.nextElementSibling);
+                //형 요소 선택
+                // console.log(obj,idx,obj.previousElementSibling);
+                // 부모 요소 선택
+                // console.log(obj.parentNode);
+                //자식 요소들 선택
+                // console.log(obj.parentNode.children);
+                obj.onclick = function() {
+                    if(this.nextElementSibling.clientHeight == 0)
+                        this.nextElementSibling.style.height = this.nextElementSibling.scrollHeight + 'px';
                     else
-                        content[idx].style.height = '0px';
+                        this.nextElementSibling.style.height = '0px';
                 }
             });
+            //all close 버튼 눌렀을때 모든 content를 0px로 바꾸는 작업 
         }
     </script>
 </head>
