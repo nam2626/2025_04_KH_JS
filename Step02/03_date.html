@@ -5,10 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>date</title>
     <script>
-       
+       let today = new Date();
+       document.write(today.toLocaleString(),'<br>');
+       //년
+       document.write(today.getFullYear(),'<br>');
+       //월
+       document.write(today.getMonth(),'<br>');
+       //일
+       document.write(today.getDate(),'<br>')
+       //요일
+       document.write(today.getDay(),'<br>');
+       //시
+       document.write(today.getHours(),'<br>');
+       //분
+       document.write(today.getMinutes(),'<br>');
+       //초
+       document.write(today.getSeconds(),'<br>');
+       //날짜 정보의 밀리초 값
+       document.write(today.getTime(),'<br>');
+       //날짜 정보 지정
+       //let sunday = new Date(2025,5,22);
+       let sunday = new Date('2025-06-22 00:00:00');
+       document.write(sunday.toLocaleString(),'<br>');
+    //    document.write(sunday.getDay(),'<br>');
+       //현재 날짜의 월 초 날짜 출력
+        let firstDay = new Date(today.getFullYear(),today.getMonth(),1);
+       //현재 날짜의 월 말 날짜를 출력
+        let lastDay = new Date(today.getFullYear(),today.getMonth()+1,0);
+        document.write(firstDay.toLocaleString(),'<br>');
+        document.write(lastDay.toLocaleString(),'<br>');
+        
+        document.write(
+            (lastDay.getTime() - firstDay.getTime()) / (1000 * 60 * 60 *24));
+    
+
     </script>
 </head>
 <body>
     
 </body>
 </html>
+
+
+
+
