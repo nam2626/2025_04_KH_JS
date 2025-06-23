@@ -68,7 +68,10 @@
         div.content{
             height: 0px;
             overflow: hidden;
-            transition: all 1s;
+            transition: all 0.5s;
+        }
+        .title{
+            cursor: pointer;
         }
     </style>
     <script>
@@ -92,6 +95,11 @@
                 }
             });
             //all close 버튼 눌렀을때 모든 content를 0px로 바꾸는 작업 
+            document.querySelector('#btn_close').addEventListener('click',function(){
+                document.querySelectorAll('.content').forEach((obj) => {
+                    obj.style.height = '0px';
+                });
+            });
         }
     </script>
 </head>
