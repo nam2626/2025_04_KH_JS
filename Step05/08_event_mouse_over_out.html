@@ -15,7 +15,23 @@
         }
     </style>
     <script>
+        window.onload = () =>{
+            //div 태그 선택
+            let div = document.querySelector("#div");
 
+            //div에 마우스가 올라갔을때 이벤트 : onmouseover
+            div.onmouseover = () => {
+                div.style.borderColor = 'red';
+                console.log('div에 마우스 올라감');
+            }
+
+            //div에 마우스가 벗어났을때 이벤트 : onmouseout
+            //단, div 영역에 있는 다른 태그 위에 올라가면 이벤트가 발생함.
+            div.onmouseout = (e) => {
+                e.target.style.borderColor = 'black';
+                console.log('div에 마우스 벗어남');
+            }
+        }
     </script>
 </head>
 <body>
