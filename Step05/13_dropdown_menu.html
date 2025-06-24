@@ -43,11 +43,23 @@
        #sub_menu_container{
         height: 0px;
         overflow: hidden;
+        transition: all 1s;
        }
        
     </style>
     <script>
-      
+      window.onload = () => {
+        const subMenuHeight = document.querySelector('#sub_menu_container').scrollHeight;
+
+        //메뉴 영역에 마우스가 올라가면 sub_menu_container의 세로 길이 값을 scrollHeight 값을 주고,
+        document.querySelector('nav').onmouseenter = () => {
+            document.querySelector('#sub_menu_container').style.height = subMenuHeight + 'px';
+        }
+        //메뉴 영역에 마우스가 벗어나면 sub_menu_container의 세로 길이 값을 0px로 지정
+        document.querySelector('nav').onmouseleave = () => {
+            document.querySelector('#sub_menu_container').style.height = '0px';
+        }
+      }
     </script>
 </head>
 <body>
