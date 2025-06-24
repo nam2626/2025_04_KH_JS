@@ -5,7 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>드롭다운 메뉴</title>
     <style>
-        
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        nav {
+            width: 1200px;
+            margin:100px auto;
+            border:1px solid orangered;
+        }
+        nav ul {
+            list-style-type: none;
+        }
+        #main_menu, #sub_menu_container{
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        #main_menu li, .sub_menu{
+            width: calc(100% / 5);
+        }
+        nav a:link,nav a:visited{
+            display: inline-block;
+            width: 100%;
+            border:1px solid black;
+            text-decoration: none;
+            color: black;
+            text-align: center;
+        }
+        #main_menu a:link,#main_menu a:visited{
+            padding: 20px 0px;
+        }
+        .sub_menu a:link,.sub_menu a:visited{
+            padding: 15px 0px;
+            color: purple;
+        }
+       #sub_menu_container{
+        height: 0px;
+        overflow: hidden;
+       }
+       
     </style>
     <script>
       
