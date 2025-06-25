@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>event</title>
     <script>
+        window.onload = () => {
+            let h1 = document.querySelector('h1');
 
+            h1.ondblclick = () => {
+                alert('h1 더블클릭');
+            }
+        }
     </script>
 </head>
 <body>
