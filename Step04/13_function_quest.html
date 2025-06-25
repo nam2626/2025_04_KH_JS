@@ -11,14 +11,30 @@
 
             let firstDay = new Date(year, month - 1,1);
             let lastDay = new Date(year, month, 0);
-            firstDay = firstDay.setDate(firstDay.getDate() - firstDay.getDay());
-            lastDay = lastDay.setDate(lastDay.getDate() + 6 - lastDay.getDay());
+            firstDay.setDate(firstDay.getDate() - firstDay.getDay());
+            lastDay.setDate(lastDay.getDate() + 6 - lastDay.getDay());
 
             //테이블 태그 조립
             let tag = `<h2>${year}년 ${month}월</h2>`;
             tag += '<table><tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>';
             
+            while(firstDay.getTime() <= lastDay.getTime()){
+                switch(firstDay.getDay()){
+                    case 0:
+                        tag += `<tr><td>${firstDay.getDate()}</td>`;
+                        break;
+                    case 6:
+                        tag += `<td>${firstDay.getDate()}</td></tr>`;
+                        break;
+                    default:
+                        tag += `<td>${firstDay.getDate()}</td>`;
+                }
+                firstDay.setDate(firstDay.getDate() + 1);
+            }   
+            tag += '</table>';
 
+            //calendar에 출력
+            document.querySelector("#calendar").innerHTML = tag;
         }
 
     </script>
