@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>달력 출력하기</title>
+    <script>
+        function showCalendar(){
+            const year = document.querySelector("#year").value;
+            const month = document.querySelector("#month").value;
+
+            let firstDay = new Date(year, month - 1,1);
+            let lastDay = new Date(year, month, 0);
+            firstDay = firstDay.setDate(firstDay.getDate() - firstDay.getDay());
+            lastDay = lastDay.setDate(lastDay.getDate() + 6 - lastDay.getDay());
+
+            //테이블 태그 조립
+            let tag = `<h2>${year}년 ${month}월</h2>`;
+            tag += '<table><tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>';
+            
+
+        }
+
+    </script>
 </head>
 <body>
     <div class="calendar-container">
