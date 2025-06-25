@@ -16,11 +16,38 @@
 </head>
 <body>
     <input type="text" id="txt">
-    <button id="btn">로또번호 생성</button>
+    <button id="btn" onclick="generateLotto()">로또번호 생성</button>
     <hr>
     <div id="area"></div>
     <script>
-              
+        //태그 조립하는 부분을 reduce로 변경해서 area에 출력
+        function generateLotto(){
+        const count = parseInt(document.getElementById("txt").value) || 1;      
+
+        let tableHTML = "<table>";
+        
+        for(let i = 0; i < count; i++) {
+
+            const numbers = [];
+            while(numbers.length < 6) {
+                const num = Math.floor(Math.random() * 45) + 1;
+                if(!numbers.includes(num)) {
+                    numbers.push(num);
+                }
+            }
+
+            tableHTML += "<tr>";
+            for(let num of numbers) {
+                tableHTML += `<td>${num}</td>`;
+            }
+            tableHTML += "</tr>";
+        }
+        
+        tableHTML += "</table>";
+        //태그 조립 부분
+        
+        document.getElementById("area").innerHTML = tableHTML;
+      }       
     </script>
 </body>
 </html>
