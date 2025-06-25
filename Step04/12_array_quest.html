@@ -24,10 +24,8 @@
         function generateLotto(){
         const count = parseInt(document.getElementById("txt").value) || 1;      
 
-        let tableHTML = "<table>";
-        
+        let lotto = [];
         for(let i = 0; i < count; i++) {
-
             const numbers = [];
             while(numbers.length < 6) {
                 const num = Math.floor(Math.random() * 45) + 1;
@@ -35,17 +33,12 @@
                     numbers.push(num);
                 }
             }
-
-            tableHTML += "<tr>";
-            for(let num of numbers) {
-                tableHTML += `<td>${num}</td>`;
-            }
-            tableHTML += "</tr>";
+            lotto.push(numbers);
         }
-        
-        tableHTML += "</table>";
+        console.log(lotto);
         //태그 조립 부분
-        
+        let tableHTML = `<table>${lotto.reduce((a, c) => `${a}<tr>${c.reduce((acc,cur) => `${acc}<td>${cur}</td>`,'')}</tr>`,'')}</table>`;
+       
         document.getElementById("area").innerHTML = tableHTML;
       }       
     </script>
