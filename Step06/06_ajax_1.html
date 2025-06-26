@@ -6,14 +6,43 @@
     <title>ajax</title>
     <script>
      window.onload = () => {
+        let result = document.querySelector('.result');
+        document.querySelector('button').onclick = () =>{
+            result.innerHTML = '<p>요청한 데이터 로딩 중.....</p>';
+            
+            fetch('http://nam2626.dothome.co.kr/json_server.php')
+            .then((response) => {
+                //호출이 성공했는지 확인
+                if(!response.ok){
+                    throw new Error(`HTTP Error : ${response.status}`)
+                }
+                //호출 성공시 응답을 json 객체로 파싱하여 반환
+                return response.json();
+            }).then(data => {
+                //json 객체로 파싱해서 받은 것을 화면에 출력
+                //html 태그로 조립 후 출력
+                console.log(data);
+                let tag = '';
+                data.forEach((item, idx) =>{
+                    tag += `
+                        <div class="user-card">
+                            <h3>${item.name} / ${item.id}</h3>
+                            <p>직업 : ${item.job}</p>    
+                            <p>이메일 : ${item.email}</p>    
+                        </div>
+                    `;
+                });
+                result.innerHTML = tag;
 
-
-
+            }).catch(error => {
+                console.log(error);
+            });
+        }
      }
     </script>
 </head>
 <body>
-    <button>날씨 정보 읽기</button>
+    <button>json 정보 요청하기</button>
     <div class="result"></div>
 </body>
 </html>
