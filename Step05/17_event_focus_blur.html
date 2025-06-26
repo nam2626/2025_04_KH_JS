@@ -5,7 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>event</title>
     <script>
+      window.onload = () => {
+        let txt = document.querySelector("#txt");
 
+        txt.onfocus = (e) => {
+          //배경색 노랑색 
+          e.target.style.backgroundColor = 'yellow';
+        }
+
+        txt.onblur = (e) => {
+          //배경색 흰색
+          e.target.style.backgroundColor = 'white';
+        }
+        //a 태그가 선택이되면 글꼴을 두껍게 설정, 선택이 풀리면 원상태로 돌림
+        document.querySelector('a').onfocus = function () {
+          this.style.fontWeight = 'bold';
+        }
+        document.querySelector('a').onblur = function () {
+          this.style.fontWeight = 'normal';
+        }
+      }
     </script>
   </head>
 
