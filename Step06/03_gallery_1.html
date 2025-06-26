@@ -29,6 +29,7 @@
         width: 800px;
         display: flex;
         flex-flow: row nowrap;
+        transition: all 1s;
       }
       .thumnail_bar{
         width: 400px;
@@ -50,7 +51,18 @@
       }
     </style>
     <script>
-    
+        window.onload = () =>{
+            let thumnail = document.querySelector('.thumnail');
+            let idx = 0;
+            document.querySelector('.left_arrow').onclick = () => {
+                idx++;
+                thumnail.style.marginLeft = idx * -80 + 'px';
+            }
+            document.querySelector('.right_arrow').onclick = () => {
+                idx--;
+                thumnail.style.marginLeft = idx * -80 + 'px';
+            }
+        }
     </script>
 </head>
 <body>
