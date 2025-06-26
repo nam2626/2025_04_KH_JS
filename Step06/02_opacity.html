@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #val{
+            width: 500px;
+        }
+    </style>
     <script>
-    
+        window.onload = () => {
+            
+            //range를 선택해서 값이 바뀌었을때 img 태그의 opacity 값을 변경
+            //예> range 1 -> opacity 값은 0.1
+            document.querySelector('#val').oninput = (e) => {
+                document.querySelector('img').style.opacity = e.target.value / 10;
+            }
+        }
     </script>
 </head>
 <body>
