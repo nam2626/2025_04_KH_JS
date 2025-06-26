@@ -54,14 +54,25 @@
         window.onload = () =>{
             let thumnail = document.querySelector('.thumnail');
             let idx = 0;
+            const thumnailBar = document.querySelector('.thumnail_bar').clientWidth;
             document.querySelector('.left_arrow').onclick = () => {
+                if(thumnailBar + idx * 80 == thumnail.scrollWidth)
+                    return;
                 idx++;
                 thumnail.style.marginLeft = idx * -80 + 'px';
             }
             document.querySelector('.right_arrow').onclick = () => {
+                if(idx == 0) return;
                 idx--;
                 thumnail.style.marginLeft = idx * -80 + 'px';
             }
+
+            document.querySelectorAll('.thumnail img').forEach((item, idx) =>{
+                item.onclick = () => {
+                    document.querySelector('.main_img').src = item.src;
+                }             
+            });
+            
         }
     </script>
 </head>
