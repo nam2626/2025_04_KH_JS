@@ -70,13 +70,16 @@
         easing : 'linear'
       }
       const item_container = document.querySelector('.item_container');
-
+      let flag = false;
       document.querySelector('.left_arrow').onclick = () =>{
+        if(flag) return;
+        flag = true;
           let containerWidth = item_container.parentElement.clientWidth;
           //왼쪽으로 이미지 이동
           item_container.firstElementChild.animate({marginLeft : `-${containerWidth}px`},animationOptions).onfinish = () => {
             //맨뒤로 해당 이미지 이동
             item_container.appendChild(item_container.firstElementChild);
+            flag = false;
           };
       }
     }
