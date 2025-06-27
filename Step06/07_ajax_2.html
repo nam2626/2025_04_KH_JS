@@ -7,13 +7,47 @@
     <title>ajax</title>
     <script>
         window.onload = () => {
+            let result = document.querySelector('.result');
 
+            document.querySelector('button').onclick = () => {
+                fetch('http://nam2626.dothome.co.kr/xml_server.php')
+                .then(response => {
+                    if(!response.ok){
+                        throw new Error(`HTTP 에러!, 상태 : ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(str => {
+                    //텍스트를 XML DOM객체로 파싱
+                    let parser =  new DOMParser();
+                    let xmlDoc = parser.parseFromString(str,'application/xml');
+
+                    console.log(str);
+                    console.log(xmlDoc);
+
+                    let users = xmlDoc.querySelectorAll('user');
+                    let tag = '';
+                    users.forEach((item,idx) => {
+                        console.log(item);
+                        console.log(item.childNodes);
+                        tag += `
+                            <div class="user-card">
+                            <h3>${item.querySelector('name').innerHTML} / ${item.querySelector('id').innerHTML}</h3>
+                            <p>직업 : ${item.querySelector('job').innerHTML}</p>    
+                            <p>이메일 : ${item.querySelector('email').innerHTML}</p>    
+                        </div>
+                        `;
+                    });
+                    result.innerHTML = tag;
+                })
+                .catch()
+            }
         }
     </script>
 </head>
 
 <body>
-    <button>날씨 정보 읽기</button>
+    <button>xml 데이터 요청</button>
     <div class="result"></div>
 </body>
 
