@@ -69,11 +69,21 @@
                 first.animate(leftAnimation,letfOptions).addEventListener('finish', () => {
                     document.querySelector('.thumnail').appendChild(first);
                 });
-
-                
             }
             document.querySelector('.right_arrow').onclick = () => {
-               
+                //마지막 썸네일 선택
+                let last = document.querySelector('.thumnail > img:last-child');
+                //여백을 미리 -80px 지정 marginLeft
+                last.style.marginLeft = '-80px';
+                //마지막 썸네일을 맨 앞에다가 붙임 prepend
+                document.querySelector('.thumnail').prepend(last);
+                //애니메이션 재생
+                last.animate({
+                    marginLeft : '0px'
+                },letfOptions).onfinish = () => {
+                    //애니메이션 재생이 끝나면 여백을 0px로 변경
+                    last.style.marginLeft = '0px';
+                }
             }
 
             document.querySelectorAll('.thumnail img').forEach((item, idx) =>{
