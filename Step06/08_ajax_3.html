@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ajax</title>
     <script>
-      
-       window.onload = () => {
-     
 
-     }
+        window.onload = () => {
+            //openweather 날씨 정보 읽어오기
+            //1. url 셋팅
+            let cityId = '1835847';
+            let apiKey = 'API_KEY';
+            let url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=${apiKey}`;
+
+            //2. HttpRequest 객체 생성
+            let request = new XMLHttpRequest();
+
+            //3. URL 및 전송 방식 셋팅, 결과를 받을 데이터 형식 셋팅
+            request.open('GET',url);
+            request.responseType = 'json';
+
+            //4-1. 이벤트 처리 - 데이터 요청에 성공 했을때 -> 받은 데이터 출력
+
+            //4-1. 이벤트 처리 - 데이터 요청에 실패 했을때 -> 로그 출력
+
+
+
+
+        }
     </script>
 </head>
+
 <body>
-    <input type="text" id="txt">
-    <button>검색하기</button>
+    <button>날씨 정보 조회</button>
     <div class="result"></div>
 </body>
+
 </html>
