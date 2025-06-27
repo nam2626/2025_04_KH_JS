@@ -6,7 +6,18 @@
   <title>Document</title>
   <script>
     window.onload = () => {
-     
+      document.querySelector('button').onclick = () => {
+        let search = document.querySelector('#txt').value;
+        let url = `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=API_KEY&movieNm=${search}`;
+
+        fetch(url)
+        .then(response => response.json())
+        .then(data =>{
+          let tag = data.movieListResult.movieList.reduce((acc, cur) => `${acc}<h2>${cur.movieNm}</h2><p>개봉일 : ${cur.openDt == "" ? '미정' : cur.openDt} / 장르 : ${cur.repGenreNm}</p>`,'');
+          document.querySelector('.result').innerHTML = tag;
+        });
+
+      }
     }
   </script>
 </head>
