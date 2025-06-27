@@ -82,6 +82,21 @@
             flag = false;
           };
       }
+      document.querySelector('.right_arrow').onclick = () =>{
+          if(flag) return;
+          flag = true;
+          //마지막 아이템 맨 앞으로 이동
+          item_container.prepend(item_container.lastElementChild);
+          //미리 marginLeft 설정
+          let containerWidth = item_container.parentElement.clientWidth;
+          item_container.firstElementChild.style.marginLeft = `-${containerWidth}px`;
+          //왼쪽으로 이미지 이동
+          item_container.firstElementChild.animate({marginLeft : `0px`},animationOptions).onfinish = () => {
+            //맨뒤로 해당 이미지 이동
+            item_container.firstElementChild.style.marginLeft = '0px';
+            flag = false;
+          };
+      }
     }
 
   </script>
