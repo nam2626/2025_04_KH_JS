@@ -24,7 +24,6 @@
       .thumnail img{
         width: 80px;
         height: 80px;
-        transition: all 1s;
       }
       .thumnail{
         width: 800px;
@@ -93,10 +92,16 @@
             }
 
             document.querySelectorAll('.thumnail img').forEach((item, idx) =>{
-                item.onclick = () => {
+                item.onclick = (e) => {
                     document.querySelector('.main_img').src = item.src;
                     //썸네일 이미지 투명도 설정
+                    e.target.style.opacity = 1;
+                    document.querySelectorAll('.thumnail img').forEach((obj)=> {
+                        obj.style.opacity = obj == item ? 1 : 0.5;
+                    });
                     //inertval 이벤트 제거
+                    console.log(intervalId);
+                    clearInterval(intervalId);
                 }             
             });
             //interval 설정
