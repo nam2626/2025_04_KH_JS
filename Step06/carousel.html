@@ -5,14 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carousel</title>
   <style>
-   
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .container{
+      width: 1200px;
+      margin:0 auto;
+      border: 1px solid red;
+    }
+    .carousel{
+      width: 100%;
+      border: 1px solid black;
+      overflow: hidden;
+      position: relative;
+      font-size: 0px;
+    }
+    .item_container{
+      list-style-type: none;
+      display: flex;
+      flex-flow: row nowrap;
+      width: calc(100% * 4);
+    }
+    .item_container img {
+      width: 100%;
+    }
+    .left_arrow{
+      width: 80px;
+      height: 80px;
+      background-image: url(./img/left_arrow.png);
+      background-size: 100%;
+      /* background-color: rgba(255, 255, 255, 0.5); */
+      background-color: transparent;
+      border:none;
+      left: 0px;
+      top:calc(50% - 40px);
+      position: absolute;
+    }
+    .carousel button:hover{
+      background-color:rgba(255, 255, 255, 0.5);
+    }
+    .carousel button:active{
+      background-color:rgba(255, 255, 255, 1);
+    }
+    .right_arrow{
+      width: 80px;
+      height: 80px;
+      background-image: url(./img/right_arrow.png);
+      background-size: 100%;
+      /* background-color: rgba(255, 255, 255, 0.5); */
+      background-color: transparent;
+      border:none;
+      right: 0px;
+      top:calc(50% - 40px);
+      position: absolute;
+    }
   </style>
-  <script>
-
-  </script>
 </head>
 <body>
- 
-
+  <div class="container">
+    <div class="carousel">
+      <ul class="item_container">
+        <li><img src="./img/main_1.webp" alt=""></li>
+        <li><img src="./img/main_2.webp" alt=""></li>
+        <li><img src="./img/main_3.webp" alt=""></li>
+        <li><img src="./img/main_4.webp" alt=""></li>
+      </ul>
+      <button type="button" class="left_arrow"></button>
+      <button type="button" class="right_arrow"></button>
+    </div>
+  </div>
+    
 </body>
 </html>
