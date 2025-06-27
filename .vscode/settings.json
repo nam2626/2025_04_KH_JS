@@ -12,6 +12,6 @@
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
-  "editor.wordBreak": "normal",
+  "editor.wordBreak": "keepAll",
   "editor.wordWrap": "on"
 }
