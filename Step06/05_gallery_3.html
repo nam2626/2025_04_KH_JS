@@ -5,77 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gallery</title>
     <style>
-        *{
-            margin:0;
-            padding: 0;
-        }
-        .thumnail_container{
-            width: 500px;
-            margin: 0 auto;
-            text-align: center;
-            border:1px solid black;
-            position: relative;
-
-        }
-        .main_img{
-            width: 400px;
-            height: 400px;
-        }
-        .thumnail{
-            width: 800px;
-            font-size: 0px;
-            /* border:1px solid black; */
-            display: flex;
-            flex-flow: row nowrap;
-        }
-
-        .thumnail img{
-            width: 80px;
-            height: 80px;
-            display: inline-block;
-        }
-
-        .thumnail_bar{
-            width: 400px;
-            margin:0 auto;
-            border:1px solid red;
-            overflow: hidden;
-        }
-        .left_arrow, .right_arrow{
-            position: absolute;
-            bottom:6px;
-        }
-        .left_arrow{
-            left: 0px;
-        }
-        .right_arrow{
-            right: 0px;
-        }
+      *{
+        margin:0;
+        padding:0;
+      }
+      .thumnail_container{
+        width: 500px;
+        margin:0 auto;
+        text-align: center;
+        border: 1px solid black;
+        position: relative;
+        font-size: 0px;
+      }
+      .main_img{
+        width: 400px;
+        height: 400px;
+      }
+      .thumnail img{
+        width: 80px;
+        height: 80px;
+        transition: all 1s;
+      }
+      .thumnail{
+        width: 800px;
+        display: flex;
+        flex-flow: row nowrap;
+      }
+      .thumnail_bar{
+        width: 400px;
+        overflow: hidden;
+        border:1px solid red;
+        display: flex;
+        flex-flow: row nowrap;
+        margin:0 auto;
+      }
+      .left_arrow, .right_arrow{
+        position: absolute;
+        bottom: 0px;
+      }
+      .left_arrow{
+        left: 0px;
+      }
+      .right_arrow{
+        right: 0px;
+      }
     </style>
     <script>
-     
+        window.onload = () =>{
+            let letfOptions = {
+                duration : 500,
+                iteration : 1,
+                fill:'backwards'
+            };
+            let leftAnimation = {
+                marginLeft : '-80px'
+            };
+
+            //썸네일 이미지 투명도 설정
+            document.querySelectorAll('.thumnail img').forEach((item, idx)=>{
+                item.style.opacity = idx == 0 ? 1 : 0.5;
+            });
+
+            document.querySelector('.left_arrow').onclick = () => {
+                //thumnail 안에 있는 첫번째 이미지 선택
+                console.log(document.querySelector('.thumnail > img:first-child'));
+                
+                let first = document.querySelector('.thumnail > img:first-child');
+
+                first.animate(leftAnimation,letfOptions).addEventListener('finish', () => {
+                    document.querySelector('.thumnail').appendChild(first);
+                });
+            }
+            document.querySelector('.right_arrow').onclick = () => {
+                //마지막 썸네일 선택
+                let last = document.querySelector('.thumnail > img:last-child');
+                //여백을 미리 -80px 지정 marginLeft
+                last.style.marginLeft = '-80px';
+                //마지막 썸네일을 맨 앞에다가 붙임 prepend
+                document.querySelector('.thumnail').prepend(last);
+                //애니메이션 재생
+                last.animate({
+                    marginLeft : '0px'
+                },letfOptions).onfinish = () => {
+                    //애니메이션 재생이 끝나면 여백을 0px로 변경
+                    last.style.marginLeft = '0px';
+                }
+            }
+
+            document.querySelectorAll('.thumnail img').forEach((item, idx) =>{
+                item.onclick = () => {
+                    document.querySelector('.main_img').src = item.src;
+                    //썸네일 이미지 투명도 설정
+                    //inertval 이벤트 제거
+                }             
+            });
+            //interval 설정
+            let intervalId = setInterval(() => {
+                document.querySelector('.left_arrow').onclick();
+            },5000);
+        }
     </script>
 </head>
 <body>
-   <div class="thumnail_container">
-        <img src="img/1.webp" class="main_img">
-        <div class="thumnail_bar">
-            <ul class="thumnail">
-                <li><img src="img/1.webp" alt=""></li>
-                <li><img src="img/2.webp" alt=""></li>
-                <li><img src="img/3.webp" alt=""></li>
-                <li><img src="img/4.webp" alt=""></li>
-                <li><img src="img/5.webp" alt=""></li>
-                <li><img src="img/6.webp" alt=""></li>
-                <li><img src="img/7.webp" alt=""></li>
-                <li><img src="img/8.webp" alt=""></li>
-                <li><img src="img/9.webp" alt=""></li>
-                <li><img src="img/10.webp" alt=""></li>
-            </ul>
+  <div class="thumnail_container">
+    <img src="./img/1.webp" class="main_img">
+    <div class="thumnail_bar">
+        <div class="thumnail">
+            <img src="./img/1.webp" alt="">
+            <img src="./img/2.webp" alt="">
+            <img src="./img/3.webp" alt="">
+            <img src="./img/4.webp" alt="">
+            <img src="./img/5.webp" alt="">
+            <img src="./img/6.webp" alt="">
+            <img src="./img/7.webp" alt="">
+            <img src="./img/8.webp" alt="">
+            <img src="./img/9.webp" alt="">
+            <img src="./img/10.webp" alt="">
         </div>
-        <a class="left_arrow"><img src="img/left_arrow.png" alt=""></a>
-        <a class="right_arrow"><img src="img/right_arrow.png" alt=""></a>
+    </div>
+    <a class="left_arrow"><img src="./img/left_arrow.png"></a>
+    <a class="right_arrow"><img src="./img/right_arrow.png"></a>
 
-   </div>
+  </div>
 </body>
 </html>
