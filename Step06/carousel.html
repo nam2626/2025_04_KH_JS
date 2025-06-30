@@ -60,8 +60,36 @@
       top:calc(50% - 40px);
       position: absolute;
     }
+    .indicator{
+      width: 100%;
+      list-style-type: none;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      gap: 5px;
+      position: absolute;
+      bottom: 0px;
+      /* left: calc(50% - 150px); */
+     
+    }
+    .indicator li {
+      width: calc(100% / 4);
+      height: 15px;
+      background-color: white;
+      /* border-radius: 12px; */
+      transition: all 0.5s;
+    }
+    .active{
+      background-color: gray !important;
+      /* box-shadow: 0px 0px 10px 10px white; */
+    }
   </style>
   <script>
+    function setIndicator(idx) {
+      document.querySelectorAll('.indicator li').forEach((item, index) => {
+          item.classList.toggle('active', idx === index);
+      });
+    }
     window.onload = () => {
       const animationOptions = {
         duration : 1000,
@@ -71,20 +99,26 @@
       }
       const item_container = document.querySelector('.item_container');
       let flag = false;
+      let idx = 0;     
       document.querySelector('.left_arrow').onclick = () =>{
         if(flag) return;
         flag = true;
-          let containerWidth = item_container.parentElement.clientWidth;
-          //왼쪽으로 이미지 이동
-          item_container.firstElementChild.animate({marginLeft : `-${containerWidth}px`},animationOptions).onfinish = () => {
-            //맨뒤로 해당 이미지 이동
-            item_container.appendChild(item_container.firstElementChild);
-            flag = false;
-          };
+        idx = ++idx % 4;
+        setIndicator(idx);
+        let containerWidth = item_container.parentElement.clientWidth;
+        //왼쪽으로 이미지 이동
+        item_container.firstElementChild.animate({marginLeft : `-${containerWidth}px`},animationOptions).onfinish = () => {
+          //맨뒤로 해당 이미지 이동
+          item_container.appendChild(item_container.firstElementChild);
+          flag = false;
+        };
       }
       document.querySelector('.right_arrow').onclick = () =>{
           if(flag) return;
           flag = true;
+          idx--;
+          if(idx < 0) idx = 3;
+          setIndicator(idx);
           //마지막 아이템 맨 앞으로 이동
           item_container.prepend(item_container.lastElementChild);
           //미리 marginLeft 설정
@@ -112,6 +146,12 @@
       </ul>
       <button type="button" class="left_arrow"></button>
       <button type="button" class="right_arrow"></button>
+      <ul class="indicator">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
   </div>
     
